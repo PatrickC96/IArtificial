@@ -32,6 +32,10 @@ public class Ag2 extends Agent {
         public void action() {
             System.out.println("yo soy el agente 2 !!!");
             ACLMessage acl = blockingReceive();
+            String conten=acl.getConversationId();
+            
+                System.out.println(acl.getContent().equalsIgnoreCase("contenido enviado"));
+            
             System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
             //doWait(10000);
             //System.out.println("enviando mensaje");
