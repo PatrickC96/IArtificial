@@ -34,11 +34,13 @@ public class Ag4 extends Agent {
             System.out.println("yo soy el agente 4 !!!");
             ACLMessage acl = blockingReceive();
             ACLMessage acl2 = blockingReceive();
-            System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
-            System.out.println("Hola, q gusto " + acl2.getSender() + ", yo soy " + getAgent().getName());
-            doDelete();
+            if(acl.getConversationId().equalsIgnoreCase("COD003") && acl2.getConversationId().equalsIgnoreCase("COD003")){
+                System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
+                System.out.println("Hola, q gusto " + acl2.getSender() + ", yo soy " + getAgent().getName());
+                System.out.println("Ready el agente 4");
+            }else{
+                System.out.println("No puede continuar 4");
+            }
         }
-
     }
-
 }

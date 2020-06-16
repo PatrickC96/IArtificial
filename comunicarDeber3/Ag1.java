@@ -27,7 +27,9 @@ public class Ag1 extends Agent {
             System.out.println("yo soy el agente 1 !!!");
             new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag5", getAgent(), 
                     "Hola Agente, soy " + getAgent().getName(),"COD001");
-            doDelete();
+            doWait(1000);
+            //doDelete();
+            
         }
     }
 }

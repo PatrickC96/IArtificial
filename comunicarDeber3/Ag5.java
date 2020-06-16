@@ -29,13 +29,17 @@ public class Ag5 extends Agent {
     class Comportamiento extends CyclicBehaviour {
 
         @Override
-        public void action() {
+        public void action() {            
             System.out.println("yo soy el agente 5 !!!");
             ACLMessage acl = blockingReceive();
             ACLMessage acl2 = blockingReceive();
-            System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
-            System.out.println("Hola, q gusto " + acl2.getSender() + ", yo soy " + getAgent().getName());
-            doDelete();
+            if(acl.getConversationId().equalsIgnoreCase("COD001") && acl2.getConversationId().equalsIgnoreCase("COD001")){
+                System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
+                System.out.println("Hola, q gusto " + acl2.getSender() + ", yo soy " + getAgent().getName());
+                System.out.println("Ready el agente 5");
+            }else{
+                System.out.println("No puede continuar 5");
+            }            
         }
     }
 }
