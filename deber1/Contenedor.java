@@ -1,4 +1,4 @@
-package agentes;
+package deber1;
 
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
