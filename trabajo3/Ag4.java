@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deber4;
+package trabajo3;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -13,7 +13,7 @@ import jade.lang.acl.ACLMessage;
  *
  * @author david
  */
-public class Ag5 extends Agent {
+public class Ag4 extends Agent {
 
     @Override
     protected void setup() {
@@ -22,27 +22,24 @@ public class Ag5 extends Agent {
 
     @Override
     protected void takeDown() {
-        System.out.println("Soy el agente 5 y voy a morir");
+
+        System.out.println("Soy el agente 4 y voy a morir");
     }
 
     class Comportamiento extends CyclicBehaviour {
 
         @Override
-        public void action() {            
-            System.out.println("yo soy el agente 5 !!!");
+        public void action() {
+            System.out.println("yo soy el agente 4 !!!");
             ACLMessage acl = blockingReceive();
             ACLMessage acl2 = blockingReceive();
-            if(acl.getConversationId().equalsIgnoreCase("COD001") && acl2.getConversationId().equalsIgnoreCase("COD001")){
+            if(acl.getConversationId().equalsIgnoreCase("COD003") && acl2.getConversationId().equalsIgnoreCase("COD003")){
                 System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
                 System.out.println("Hola, q gusto " + acl2.getSender() + ", yo soy " + getAgent().getName());
-                new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, "Ag4", getAgent(),
-                        "Hola Agente, soy " + getAgent().getName(),"COD004");
-                //ACLMessage acl3 = blockingReceive();
-                //System.out.println("Hola, q gusto " + acl3.getSender() + ", yo soy " + getAgent().getName());
-                System.out.println("Ready el agente 5");
+                System.out.println("Ready el agente 4");
             }else{
-                System.out.println("No puede continuar 5");
-            }            
+                System.out.println("No puede continuar 4");
+            }
         }
     }
 }

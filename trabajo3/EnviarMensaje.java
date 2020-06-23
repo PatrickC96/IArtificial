@@ -1,15 +1,14 @@
-package deber4;
+package trabajo3;
 
 /**
  *
  * @author david
  */
-
+import comunicacion.*;
 import jade.core.AID;
 import jade.core.Agent;
 import jade.domain.FIPANames;
 import jade.lang.acl.ACLMessage;
-
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;

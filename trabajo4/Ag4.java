@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comunicarDeber3;
+package trabajo4;
 
-import comunicacion.*;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -21,12 +20,6 @@ public class Ag4 extends Agent {
         addBehaviour(new Comportamiento());
     }
 
-    @Override
-    protected void takeDown() {
-
-        System.out.println("Soy el agente 4 y voy a morir");
-    }
-
     class Comportamiento extends CyclicBehaviour {
 
         @Override
@@ -37,7 +30,16 @@ public class Ag4 extends Agent {
             if(acl.getConversationId().equalsIgnoreCase("COD003") && acl2.getConversationId().equalsIgnoreCase("COD003")){
                 System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
                 System.out.println("Hola, q gusto " + acl2.getSender() + ", yo soy " + getAgent().getName());
-                System.out.println("Ready el agente 4");
+                new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, "Ag5", getAgent(),
+                        "Hola Agente, soy " + getAgent().getName(),"COD005");                
+                ACLMessage acl3 = blockingReceive();
+                if(acl3.getConversationId().equalsIgnoreCase("COD004")){
+                    System.out.println("Hola, q gusto " + acl3.getSender() + ", yo soy " + getAgent().getName()); 
+                    System.out.println("Ready el agente 4");
+                }else{
+                    System.out.println("Error en el agente 4");
+                }
+
             }else{
                 System.out.println("No puede continuar 4");
             }

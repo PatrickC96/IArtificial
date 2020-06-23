@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comunicarDeber3;
+package trabajo4;
 
-import comunicacion.*;
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
@@ -31,11 +30,11 @@ public class Ag2 extends Agent {
         @Override
         public void action() {
             System.out.println("yo soy el agente 2 !!!");
-            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag5", getAgent(), 
+            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag5", getAgent(),
                     "Hola Agente, soy " + getAgent().getName(),"COD001");
-            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag4", getAgent(), 
+            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag4", getAgent(),
                     "Hola Agente, soy " + getAgent().getName(),"COD003");
-            doWait(1000);
+            doWait(10000);
             //doDelete();
         }
 

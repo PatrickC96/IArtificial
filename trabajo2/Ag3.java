@@ -1,10 +1,10 @@
-package deber2;
+package trabajo2;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
-public class Ag5 extends Agent {
+public class Ag3 extends Agent {
 
     @Override
     protected void setup() {
@@ -13,10 +13,11 @@ public class Ag5 extends Agent {
     }
 
 
+
     class Comportamiento extends CyclicBehaviour {
         @Override
         public void action() {
-            System.out.println("yo soy el agente 5 !!!");
+            System.out.println("yo soy el agente 3 !!!");
             doWait(1000);
 
         }

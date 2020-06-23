@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package comunicarDeber3;
+package trabajo4;
 
-import comunicacion.*;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
@@ -35,7 +34,7 @@ public class Contenedor {
     private void iniciarAgentes() {
 
         try {
-            mainContainer.createNewAgent("Ag5", Ag5.class.getName(), null).start();            
+            mainContainer.createNewAgent("Ag5", Ag5.class.getName(), null).start();
             mainContainer.createNewAgent("Ag4", Ag4.class.getName(), null).start();
             mainContainer.createNewAgent("Ag1", Ag1.class.getName(), null).start();
             mainContainer.createNewAgent("Ag2", Ag2.class.getName(), null).start();

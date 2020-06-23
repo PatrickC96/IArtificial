@@ -1,9 +1,10 @@
-package deber1;
+package trabajo1;
 
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
 
 public class Contenedor {
+    Object[] contenedor = new Object[1];
 
     public void contenedor() {
         jade.core.Runtime runtime = jade.core.Runtime.instance();
@@ -14,6 +15,7 @@ public class Contenedor {
         AgentContainer mainContainer = runtime.createMainContainer(profile);
         System.out.println("contenedor creado" + profile.toString());
         System.out.println("contenedro: " + mainContainer.toString());
+        contenedor[0] = this;
     }
 
     public static void main(String[] args) {

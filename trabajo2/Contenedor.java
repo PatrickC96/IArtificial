@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package deber2;
+package trabajo2;
 
 import jade.core.Profile;
 import jade.core.ProfileImpl;

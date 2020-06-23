@@ -1,10 +1,10 @@
-package comunicarDeber3;
-
-/**
- *
- * @author david
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
-import comunicacion.*;
+package PasarObjetos;
+
 import jade.core.AID;
 import jade.core.Agent;
 import jade.domain.FIPANames;
@@ -14,6 +14,10 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *
+ * @author Henry Paz
+ */
 public class EnviarMensaje {
 
     public static void enviarMensajeObject(int tipoMsj, String receptor,

@@ -1,4 +1,4 @@
-package deber2;
+package trabajo4;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
@@ -12,6 +12,10 @@ public class Ag1 extends Agent {
         addBehaviour(new Comportamiento());
     }
 
+    @Override
+    protected void takeDown() {
+        System.out.println("Soy el agente 1 y voy a morir");
+    }
 
     //el comportamiento es Behaviour 
     //
@@ -19,8 +23,11 @@ public class Ag1 extends Agent {
         @Override
         public void action() {
             System.out.println("yo soy el agente 1 !!!");
-            doWait(1000);
-
+            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag5", getAgent(),
+                    "Hola Agente, soy " + getAgent().getName(),"COD001");
+            doWait(10000);
+            //doDelete();
+            
         }
     }
 }

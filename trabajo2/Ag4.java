@@ -1,4 +1,4 @@
-package deber2;
+package trabajo2;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;
