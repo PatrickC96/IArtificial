@@ -23,11 +23,10 @@ public class Ag1 extends Agent {
     class Comportamiento extends CyclicBehaviour {
         @Override
         public void action() {
-            //System.out.println("yo soy el agente 1 !!!");
             
             new EnviarMensaje().enviarMensajeObject(ACLMessage.INFORM, "Ag5", getAgent(),
-                    new Paciente("Juan", "23", false),"COD001");  
-            doWait(10000);
+                    new Paciente("Juan", "23", true),"COD001");  
+            doWait(1000);
             //doDelete();
             
         }

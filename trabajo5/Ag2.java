@@ -31,12 +31,12 @@ public class Ag2 extends Agent {
         @Override
         public void action() {
             //System.out.println("yo soy el agente 2 !!!");
-            Paciente paciente = new Paciente("Juan", "23", false);
+            Paciente paciente = new Paciente("Juan", "23", true);
             new EnviarMensaje().enviarMensajeObject(ACLMessage.INFORM, "Ag5", getAgent(),
                     paciente,"COD002");
             new EnviarMensaje().enviarMensajeObject(ACLMessage.INFORM, "Ag4", getAgent(),
                     paciente ,"COD003");
-            doWait(10000);
+            doWait(1000);
             //doDelete();
         }
 

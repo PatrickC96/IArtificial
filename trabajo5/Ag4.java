@@ -32,13 +32,22 @@ public class Ag4 extends Agent {
                 ACLMessage acl = blockingReceive();
                 Paciente paciente = (Paciente) acl.getContentObject();
                 if (acl.getConversationId().equalsIgnoreCase("COD003")) {
-                    System.out.println("El paciente: "+paciente.getNombre()+" tiene una temperatura: "+paciente.getTemperatura());
-                    
-                } else if (acl.getConversationId().equalsIgnoreCase("COD004")) {                    
-                    System.out.println("El paciente: "+paciente.getNombre()+" tiene una ritmo cardiaco: "+paciente.getRitmoCardiaco());
-                    new EnviarMensaje().enviarMensajeObject(ACLMessage.REQUEST, "Ag5", getAgent(), paciente, "COD005");
-                } else if (acl.getConversationId().equalsIgnoreCase("COD005")) {                    
+                    int temperatura = paciente.getTemperatura();
+                    if(temperatura>40){
+                        System.out.println("El paciente: "+paciente.getNombre()+" tiene una temperatura: "+temperatura+" muy elevada");
+                    }else if(temperatura<30){
+                        System.out.println("El paciente: "+paciente.getNombre()+" tiene una temperatura: "+temperatura+" muy baja");
+                    }
+                } else if (acl.getConversationId().equalsIgnoreCase("COD004")) { 
+                    int ritmoCardiaco=paciente.getRitmoCardiaco();
+                    if(ritmoCardiaco>160){
+                        System.out.println("El paciente: "+paciente.getNombre()+" tiene una ritmo cardiaco: "+ritmoCardiaco);
+                        new EnviarMensaje().enviarMensajeObject(ACLMessage.REQUEST, "Ag5", getAgent(), paciente, "COD005");
+                    } 
+                } else if (acl.getConversationId().equalsIgnoreCase("COD006")) {                    
                     System.out.println("El paciente: "+paciente.getNombre()+" tiene una edad: "+paciente.getEdad());                    
+                } else{
+                    System.out.println("no se sabe");
                 }                
             } catch (UnreadableException ex) {
                 Logger.getLogger(Ag5.class.getName()).log(Level.SEVERE, null, ex);

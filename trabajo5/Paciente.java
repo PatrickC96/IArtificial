@@ -49,14 +49,19 @@ public class Paciente implements Serializable {
     }
 
     public int getPresion() {
-        return new Random().nextInt(100);
+        return generarAleatorioRango(60,160);
     }
 
     public int getTemperatura() {
-        return new Random().nextInt(100);
+        return generarAleatorioRango(20,45);
     }
 
     public int getRitmoCardiaco() {
-        return new Random().nextInt(100);
+        return generarAleatorioRango(60,200);
+    }
+    
+    public static int generarAleatorioRango(int inicio, int fin) {
+        //Desde inicio hasta fin, ambos incluidos
+        return (int) (Math.random() * ((fin + 1) - inicio)) + inicio; 
     }
 }
