@@ -46,9 +46,7 @@ public class Ag4 extends Agent {
                     } 
                 } else if (acl.getConversationId().equalsIgnoreCase("COD006")) {                    
                     System.out.println("El paciente: "+paciente.getNombre()+" tiene una edad: "+paciente.getEdad());                    
-                } else{
-                    System.out.println("no se sabe");
-                }                
+                }
             } catch (UnreadableException ex) {
                 Logger.getLogger(Ag5.class.getName()).log(Level.SEVERE, null, ex);
             }

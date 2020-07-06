@@ -31,7 +31,7 @@ public class Ag2 extends Agent {
         @Override
         public void action() {
             //System.out.println("yo soy el agente 2 !!!");
-            Paciente paciente = new Paciente("Juan", "23", true);
+            Paciente paciente = new Paciente("Luis", "23", true);
             new EnviarMensaje().enviarMensajeObject(ACLMessage.INFORM, "Ag5", getAgent(),
                     paciente,"COD002");
             new EnviarMensaje().enviarMensajeObject(ACLMessage.INFORM, "Ag4", getAgent(),

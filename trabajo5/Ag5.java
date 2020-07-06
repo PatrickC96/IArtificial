@@ -50,10 +50,8 @@ public class Ag5 extends Agent {
                     if(paciente.isReisgo()){
                         System.out.println("El paciente: "+paciente.getNombre()+" esta en riesgo");
                     }                    
-                    new EnviarMensaje().enviarMensajeObject(ACLMessage.INFORM, "Ag4", getAgent(), paciente, "COD006");
-                } else{
-                    System.out.println("no se sabe");
-                }      
+                    new EnviarMensaje().enviarMensajeObject(ACLMessage.REQUEST, "Ag4", getAgent(), paciente, "COD006");
+                }
             } catch (UnreadableException ex) {
                 Logger.getLogger(Ag5.class.getName()).log(Level.SEVERE, null, ex);
             }
