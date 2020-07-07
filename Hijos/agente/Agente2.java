@@ -59,15 +59,18 @@ public class Agente2 extends Agent {
                   //---------------------------------------------------
                  
                   //------------RECIBIR Y ENVIAR MENSAJES----------------------
-                  //ACLMessage msj =  blockingReceive();
-                  //System.out.println("ESTO ES EL MENSAJE: "+ msj);
+                  ACLMessage msj =  blockingReceive();
+                  System.out.println("ESTO ES EL MENSAJE: "+ msj);  
                   
                   c = (Contenedor)getArguments()[0]; 
                   
                   
                   ACLMessage msj2 = new ACLMessage(ACLMessage.INFORM);
-
-                  //doWait(1000);
+                  msj2.addReceiver(msj.getSender()); // QUIEN RECIBE EL MENSAJE
+                  msj2.setSender(getAID());
+                  msj2.setContent("mori AgenteH");
+                  msj2.setConversationId("ag2 to ag1");
+                  msj2.setLanguage("Spanish");
                   send(msj2);
                   //---------------------------------------------------
             bandera = true;

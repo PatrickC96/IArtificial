@@ -26,16 +26,6 @@ public class Ag1 extends Agent {
     //
     class Comportamiento extends SimpleBehaviour {
         private boolean bandera = false;
-
-        public void actionnn() {
-            System.out.println("yo soy el agente 1 !!!");
-            //doWait(10000);
-            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag2", getAgent(), "contenido enviado",
-                    "COD001");
-            ACLMessage acl = blockingReceive();
-            System.out.println("Hola, q gusto " + acl.getSender() + ", yo soy " + getAgent().getName());
-            doDelete();
-        }
         @Override
         public void action() {
             System.out.println(getName());

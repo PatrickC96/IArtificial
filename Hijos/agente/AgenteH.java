@@ -73,7 +73,6 @@ public class AgenteH extends Agent {
                 msj2.setContent("mori AgenteH"+getArguments()[1].toString());
                 msj2.setConversationId("agH to ag1");
                 msj2.setLanguage("Spanish");
-                doWait(1000);
                 send(msj2);
                
                 hijo = (int) getArguments()[1];

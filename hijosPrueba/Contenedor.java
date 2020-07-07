@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package hijos;
+package hijosPrueba;
 
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -20,38 +20,29 @@ import java.util.logging.Logger;
  */
 public class Contenedor {
     AgentController agentController;
-
     AgentContainer mainContainer;
-    Object[] contenedor = new Object[1];
 
     public void contenedor() {
         jade.core.Runtime runtime = jade.core.Runtime.instance();
 
         runtime.setCloseVM(true);
-        System.out.println("Runtime ha sido creado\n");
+        //System.out.println("Runtime ha sido creado\n");
 
-        Profile profile = new ProfileImpl(null, 1099, null);
-        System.out.println("Perfil por defecto creado");
+        Profile profile = new ProfileImpl(null, 1098, null);
+        //System.out.println("Perfil por defecto creado");
 
         mainContainer = runtime.createMainContainer(profile);
-        System.out.println("Contenedor creado" + profile.toString());
-        contenedor[0] = this;
+        //System.out.println("Contenedor creado" + profile.toString());
         iniciarAgentes();
     }
 
     private void iniciarAgentes() {
 
         try {
-            //el ultimo elementeo es el conocimito.
-            //no se debe ejecutar el ejente desde sin 
-            //mainContainer.createNewAgent("Ag1", Ag1.class.getName(), null).start();
-            //mainContainer.createNewAgent("Ag2", Ag2.class.getName(), new Object[]{this}).start();
-            //mainContainer.createNewAgent("Ag3", Ag3.class.getName(), null).start();
-
-            agentController = mainContainer.createNewAgent("Agente1", Ag1.class.getName(), null);
+            agentController = mainContainer.createNewAgent("Agente1", Agente1.class.getName(), null);
             agentController.start();
             //OTRA FORMA DE INICIALIZARLO
-            mainContainer.createNewAgent("Agente2", Ag2.class.getName(), new Object[]{this}).start();
+            mainContainer.createNewAgent("Agente2", Agente2.class.getName(), new Object[]{this}).start();
         } catch (StaleProxyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -59,7 +50,7 @@ public class Contenedor {
     }
     public void crearHijos(String nickname,Object[] conocimiento){
         try {
-            mainContainer.createNewAgent(nickname, Ag3.class.getName(), conocimiento).start();
+            mainContainer.createNewAgent(nickname, AgenteH.class.getName(), conocimiento).start();
         } catch (StaleProxyException ex) {
             Logger.getLogger(contenedor.Contenedor.class.getName()).log(Level.SEVERE, null, ex);
         }

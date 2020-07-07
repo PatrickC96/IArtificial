@@ -7,16 +7,17 @@ package agente;
 
 import jade.core.AID;
 import jade.core.Agent;
+import jade.core.behaviours.CyclicBehaviour;
 import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
-
+import java.util.StringTokenizer;
 //heredo un comportamiento de un hilo, no un hilo
 public class Agente1 extends Agent {
     private String aidAgentPadre = "Agente2";
     @Override
     protected void setup() {
         // es para abrir cerrar puertos y liberar recursos
-
+      // addBehaviour(new ComportamientoAgente1());
         addBehaviour(new ComportamientoAgente1Dos());
         super.setup(); //To change body of generated methods, choose Tools | Templates.
     }
@@ -25,7 +26,7 @@ public class Agente1 extends Agent {
     //ULTIMAS PALABRAS ANTES DE MORIR 
     protected void takeDown() {
         //morirse significa liberar recursos porque ocupa archivos etc
-        System.out.println("ME MORI SOY EL 1 :'V  ");
+        System.out.println("ME MORI SOY EL 1 :(");  
         super.takeDown(); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -47,9 +48,6 @@ public class Agente1 extends Agent {
               msj.setContent("Hola Como estas soy el " + getName());
               msj.setConversationId("ag1 to ag2");
               msj.setLanguage("Spanish");
-
-              System.out.println("desde aqui espera el 1");
-                //doWait(1000);
               send(msj);
               //SI EL AGENTE NO RECIBE UN MENSAJE SE QUEDA BLOQUEADO
               
@@ -71,6 +69,8 @@ public class Agente1 extends Agent {
         public boolean done() {
            return bandera;
         }
+    
+    
     }
 }
 
