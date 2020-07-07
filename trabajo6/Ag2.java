@@ -1,4 +1,4 @@
-package hijo;
+package trabajo6;
 
 import jade.core.Agent;
 import jade.core.behaviours.SimpleBehaviour;

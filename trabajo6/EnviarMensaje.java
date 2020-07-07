@@ -1,4 +1,4 @@
-package hijo;
+package trabajo6;
 
 /**
  *

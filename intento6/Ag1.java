@@ -1,4 +1,4 @@
-package hijo;
+package intento6;
 
 import jade.core.AID;
 import jade.core.Agent;
@@ -7,6 +7,7 @@ import jade.lang.acl.ACLMessage;
 
 public class Ag1 extends Agent {
     private Contenedor c;
+    boolean estado= false;
 
     @Override
     protected void setup() {
@@ -14,6 +15,7 @@ public class Ag1 extends Agent {
         addBehaviour(new Comportamiento());
         c = (Contenedor)getArguments()[0];
         c.crearHijos("Ag2", new Object[]{c,1});
+        c.crearHijosB("Ag3", new Object[]{c,1});
     }
 
     @Override
@@ -39,12 +41,15 @@ public class Ag1 extends Agent {
             if(contenido==10){
                 new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
                         true+"","COD002");
-                System.out.println("Es el: "+contenido+" Felicitaciones");
-                doDelete();
+                System.out.println("Es el: "+contenido+" Felicitaciones, gana en agente: "+nombre.getLocalName());
+                estado=true;
             } else {
                new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
                         false+"","COD003");
                 System.out.println("No es el: "+contenido);
+            }
+            if(estado){
+                doDelete();
             }
         }
         @Override
