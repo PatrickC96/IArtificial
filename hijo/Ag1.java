@@ -6,21 +6,21 @@ import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
 
 public class Ag1 extends Agent {
+    private Contenedor c;
 
     @Override
     protected void setup() {
         //permite agregar comportamiento
         addBehaviour(new Comportamiento());
+        c = (Contenedor)getArguments()[0];
+        c.crearHijos("Ag2", new Object[]{c,1});
     }
 
     @Override
     protected void takeDown() {
-        //c.crearHijos(nombreAgenteHijo, new Object[]{c,hijo});
-        System.out.println("Soy el agente 1 y voy a morir");
+        System.out.println("Soy el agente 1 y voy a morir  :'V ");
     }
 
-    //el comportamiento es Behaviour 
-    //
     class Comportamiento extends SimpleBehaviour {
         private boolean bandera = false;
         @Override
@@ -33,16 +33,16 @@ public class Ag1 extends Agent {
             try {
                 contenido = Integer.parseInt( acl.getContent());
             }catch (Exception e){
-                System.out.println("Error al trasformar"+acl.getContent());
+                System.out.println("Error al transformar"+acl.getContent()+"!!!!!!!!!");
             }
 
             if(contenido==10){
-                new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, nombre.getLocalName(), getAgent(),
+                new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
                         true+"","COD002");
                 System.out.println("Es el: "+contenido+" Felicitaciones");
                 doDelete();
             } else {
-               new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, nombre.getLocalName(), getAgent(),
+               new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
                         false+"","COD003");
                 System.out.println("No es el: "+contenido);
             }

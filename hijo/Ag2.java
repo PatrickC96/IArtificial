@@ -33,26 +33,23 @@ public class Ag2 extends Agent {
         public void action() {
 
             new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, "Ag1", getAgent(),
-                    generarAleatorioRango(1,20)+"","COD001");
+                    generarAleatorioRango(1,30)+"","COD001");
             c = (Contenedor)getArguments()[0];
             try{
-                if (((int) getArguments()[1])>0) {
-                    hijo = (int) getArguments()[1];
-                }
+                hijo = (int) getArguments()[1];
             }catch (Exception e){
-                System.out.println("error faltal!!!!!!!!!!!!!!!");
+                System.out.println("error fatal!!!!!!!!!!!!!!!");
                 System.out.println(getArguments());
-                hijo=1;
             }
-            nombreAgenteHijo = "Ag2 - " + hijo;
-            System.out.println("Soy el agente ("+nombreAgenteHijo+")");
+            nombreAgenteHijo = "Agente-" + hijo;
+            System.out.println("Soy: ("+nombreAgenteHijo+")");
             hijo++;
             bandera = true;
             ACLMessage acl = blockingReceive();
             try{
                 estado = Boolean.parseBoolean( acl.getContent());
             }catch (Exception e){
-                System.out.println("Error al trasfomar a bool !!!!!!!!!!!!!!");
+                System.out.println("Error al transformar a bool !!!!!!!!!!!!!!");
             }
             //doWait(1000);
             doDelete();

@@ -11,7 +11,6 @@ import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
 
-
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -38,8 +37,8 @@ public class Contenedor {
     private void iniciarAgentes() {
 
         try {
-            mainContainer.createNewAgent("Ag1", Ag1.class.getName(), null).start();
-            mainContainer.createNewAgent("Ag2", Ag2.class.getName(), new Object[]{this}).start();
+            mainContainer.createNewAgent("Ag1", Ag1.class.getName(), new Object[]{this}).start();
+            //mainContainer.createNewAgent("Ag2", Ag2.class.getName(), new Object[]{this}).start();
         } catch (StaleProxyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
