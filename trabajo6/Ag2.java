@@ -59,7 +59,6 @@ public class Ag2 extends Agent {
             return bandera;
         }
     }
-
     public static int generarAleatorioRango(int inicio, int fin) {
         //Desde inicio hasta fin, ambos incluidos
         return (int) (Math.random() * ((fin + 1) - inicio)) + inicio;

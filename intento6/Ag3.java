@@ -34,9 +34,9 @@ public class Ag3 extends Agent {
         private boolean bandera = false;
         @Override
         public void action() {
-nombre=getAgent();
+        nombre=getAgent();
             new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, "Ag1", getAgent(),
-                    generarAleatorioRango(1,100)+"","COD001");
+                    generarAleatorioRango(1,1000)+"","COD001");
             c = (Contenedor)getArguments()[0];
             if(!getArguments()[1].equals("muere")){
                 try{

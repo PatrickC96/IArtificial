@@ -24,7 +24,7 @@ public class Ag3 extends Agent {
             
             new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag4", getAgent(),
                     "Hola Agente, soy " + getAgent().getName(),"COD003");
-            doWait(10000);
+            doWait(1000);
             //doDelete();
         }
     }

@@ -28,26 +28,42 @@ public class Ag1 extends Agent {
         @Override
         public void action() {
 
-            int contenido=0;
             ACLMessage acl = blockingReceive();
-            AID nombre = acl.getSender();
-
-            try {
-                contenido = Integer.parseInt( acl.getContent());
+            ACLMessage acl2 = blockingReceive();
+            doWait(10);
+            int contenido1 = 0;
+            int contenido2 = 0;
+            try{
+                contenido1 = Integer.parseInt( acl.getContent());
+                contenido2 = Integer.parseInt( acl2.getContent());
             }catch (Exception e){
-                System.out.println("Error al transformar"+acl.getContent()+"!!!!!!!!!");
+                System.out.println("Error de lectura");
+                System.out.println("Porque uno es:  !!!!!!!!!!! "+acl.getSender().getLocalName());
+                System.out.println("Porque dos es:  !!!!!!!!!!! "+acl2.getSender().getLocalName());
             }
+            if(acl.getConversationId().equals("COD001")&&acl2.getConversationId().equals("COD001")
+            ||acl.getConversationId().equals("COD001")&&acl2.getConversationId().equals("COD001")
+            ){
+                if(contenido1==10){
+                    System.out.println("Gana el agente: "+acl.getSender().getLocalName());
+                    System.out.println("Pierde el agente: "+acl2.getSender().getLocalName());
+                    estado = true;
+                }else if(contenido2==10){
+                    System.out.println("Gana el agente: "+acl2.getSender().getLocalName());
+                    System.out.println("Pierde el agente: "+acl.getSender().getLocalName());
+                    estado = true;
+                }else {
+                    estado=false;
+                }
 
-            if(contenido==10){
-                new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
-                        true+"","COD002");
-                System.out.println("Es el: "+contenido+" Felicitaciones, gana en agente: "+nombre.getLocalName());
-                estado=true;
-            } else {
-               new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
-                        false+"","COD003");
-                System.out.println("No es el: "+contenido);
+            }else{
+                System.out.println("error en algun lado agente 1 !!!!!!!!!!!!!!!!!!!!!!!!11");
             }
+            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, acl.getSender().getLocalName(), getAgent(),
+                    estado+"","COD002");
+            new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, acl2.getSender().getLocalName(), getAgent(),
+                    estado+"","COD002");
+
             if(estado){
                 doDelete();
             }

@@ -36,7 +36,7 @@ public class Ag2 extends Agent {
         public void action() {
 
             new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, "Ag1", getAgent(),
-                    generarAleatorioRango(1,100)+"","COD001");
+                    generarAleatorioRango(1,1000)+"","COD001");
             nombre=getAgent();
             c = (Contenedor)getArguments()[0];
             if(!getArguments()[1].equals("muere")){
