@@ -48,13 +48,7 @@ public class Contenedor {
             e.printStackTrace();
         }
     }
-    public void crearHijos(String nickname,Object[] conocimiento){
-        try {
-            mainContainer.createNewAgent(nickname, Ag2.class.getName(), conocimiento).start();
-        } catch (StaleProxyException ex) {
-            Logger.getLogger(contenedor.Contenedor.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+
     public void crearHijos1(String nickname,Object[] conocimiento){
         try {
             mainContainer.createNewAgent(nickname, Ag1.class.getName(), conocimiento).start();

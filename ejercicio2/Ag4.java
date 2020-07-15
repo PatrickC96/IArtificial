@@ -5,7 +5,6 @@ import jade.core.behaviours.CyclicBehaviour;
 import jade.lang.acl.ACLMessage;
 
 public class Ag4 extends Agent {
-    private Contenedor c;
 
     @Override
     protected void setup() {

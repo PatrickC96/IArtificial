@@ -31,7 +31,7 @@ public class Ag2 extends Agent {
 
             new EnviarMensaje().enviarMensajeString(ACLMessage.INFORM, "Ag4", getAgent(),
                     generarAleatorioRango(1,30)+"","COD003");
-            doWait(100);
+            doWait(1000);
             c = (Contenedor)getArguments()[0];
             hijo = (int) getArguments()[1];
             hijo++;

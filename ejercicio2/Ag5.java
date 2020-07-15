@@ -6,7 +6,6 @@ import jade.core.behaviours.SimpleBehaviour;
 import jade.lang.acl.ACLMessage;
 
 public class Ag5 extends Agent {
-    private Contenedor c;
 
     @Override
     protected void setup() {
