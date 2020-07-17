@@ -52,11 +52,12 @@ public class Agente1 extends Agent {
               //SI EL AGENTE NO RECIBE UN MENSAJE SE QUEDA BLOQUEADO
               
               ACLMessage msj2 = blockingReceive();
-              System.out.println(msj2);
+              System.out.println();
               String contenido = msj2.getContent();
               String [] content = contenido.split(" ");
               if(content[0].equalsIgnoreCase("mori")){
                 aidAgentPadre = content[1];
+                  System.out.println("este es el inicio del h con: "+msj2.getSender().getLocalName()+"con el contenido: "+msj2.getContent()+" con: "+aidAgentPadre.toString());
               }
               
                //--------------------------------------------------     

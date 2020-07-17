@@ -30,7 +30,7 @@ public class Agente2 extends Agent {
     protected void takeDown() {
         c.crearHijos("AgenteH", new Object[]{c,1});
         //morirse significa liberar recursos porque ocupa archivos etc
-        System.out.println("Soy el Agente 2 y eh muerto(");  
+        System.out.println("Soy el Agente 2 y eh muerto :'( !!!!");
         super.takeDown(); //To change body of generated methods, choose Tools | Templates.
     }
     //----------------------------------------------------------------------------------------- 
@@ -60,7 +60,7 @@ public class Agente2 extends Agent {
                  
                   //------------RECIBIR Y ENVIAR MENSAJES----------------------
                   ACLMessage msj =  blockingReceive();
-                  System.out.println("ESTO ES EL MENSAJE: "+ msj);  
+                  System.out.println("ESTO ES EL MENSAJE: "+ msj.getContent());
                   
                   c = (Contenedor)getArguments()[0]; 
                   
