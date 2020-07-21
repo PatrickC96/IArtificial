@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.ag_ejm1;
+package genetica1.ejemplo2;
 
 /**
  *
@@ -33,7 +33,7 @@ public class funcionAptitud extends FitnessFunction {
         Integer c4 = (Integer) cromosoma.getGene(3).getAllele();
         Integer c5 = (Integer) cromosoma.getGene(4).getAllele();
         Integer c6 = (Integer) cromosoma.getGene(5).getAllele();
-        Integer c7 = (Integer) cromosoma.getGene(6).getAllele();//signo Y
+        Integer c7 = (Integer) cromosoma.getGene(6).getAllele();//punto
         Integer c8 = (Integer) cromosoma.getGene(7).getAllele();
         Integer c9 = (Integer) cromosoma.getGene(8).getAllele();
         Integer c10 = (Integer) cromosoma.getGene(9).getAllele();
@@ -41,19 +41,29 @@ public class funcionAptitud extends FitnessFunction {
         Integer c12 = (Integer) cromosoma.getGene(11).getAllele();
 
         String valorX = c2.toString() + c3.toString() + c4.toString() + c5.toString() + c6.toString();
-        String valorY = c8.toString() + c9.toString() + c10.toString() + c11.toString() + c12.toString();
+        String punto = c7.toString() + c8.toString() + c9.toString() + c10.toString() + c11.toString() + c12.toString();
         int valorXint = (Integer.parseInt(valorX, 2));
-        int valorYint = (Integer.parseInt(valorY, 2));
+        int puntoInt = (Integer.parseInt(punto, 2));
+        float valfloat = Float.parseFloat(valorXint+"."+puntoInt);
         if (c1 == 0) {
-            valorXint = -valorXint;
+            valfloat = -valfloat;
         }
 
-        if (c7 == 0) {
-            valorYint = -valorYint;
+//        if (c7 == 0) {
+//            puntoInt = -puntoInt;
+//        }
+        System.out.println("valor: "+valfloat);
+        //fitness = 256 - Math.abs(valor - 50); Math.log(x)
+        //System.out.println(Math.sqrt(Math.pow(valorXint,2)+valorYint * valorYint));
+
+        //log^2(x + y)
+        //fitness = 2048 - Math.sqrt(Math.pow(valorXint,2)+valorYint * valorYint);
+        //log(x+3)
+        if(valfloat<=-3 ){
+            fitness = 0;
+        }else{
+            fitness = 4 - Math.abs(Math.log(valfloat+3));
         }
-        System.out.println(valorXint + " ; " + valorYint);
-        //fitness = 256 - Math.abs(valor - 50);
-        fitness = 2048 - ((valorXint) * (valorXint) + valorYint * valorYint);
 
     }
 }

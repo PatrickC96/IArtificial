@@ -3,25 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.ag_ejm1;
+package genetica1.agentesGenetica.genes;
 
 /**
  *
  * @author HENRY
  */
-import org.jgap.Chromosome;
-import org.jgap.Configuration;
-import org.jgap.FitnessFunction;
-import org.jgap.Gene;
-import org.jgap.Genotype;
-import org.jgap.IChromosome;
-import org.jgap.InvalidConfigurationException;
+
+import org.jgap.*;
 import org.jgap.impl.DefaultConfiguration;
 import org.jgap.impl.IntegerGene;
 
 public class Prueba {
 
-    public void empezar() {
+    public IChromosome empezar() {
+        Genotype population=null;
         try {
             //Configuramos JGAP
             Configuration configuracion = new DefaultConfiguration();
@@ -31,18 +27,9 @@ public class Prueba {
 
             //Creamos una codificacion de 8 genes que nos servira para nuestros individuos (fenotipo)
             //Los genes seran valores entre 0 y 1  ejem 01001110 individuo ejemplo
-            genEjemplo[0] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[1] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[2] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[3] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[4] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[5] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[6] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[7] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[8] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[9] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[10] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[11] = new IntegerGene(configuracion, 0, 1);
+            for(int i=0;i<genEjemplo.length;i++){
+                genEjemplo[i] = new IntegerGene(configuracion, 0, 1);
+            }
 
             //Recordemos que los cromosomas son el correspondiente a los individuos
             //Creamos un individuo a partir de la configuracion de los genes anterior
@@ -52,7 +39,7 @@ public class Prueba {
             configuracion.setPopulationSize(5); //Creamos nuestra poblacion inicial
             //Creamos el genotipo de la poblacion
             //Recordemos que el genotipo se determina del fenotipo = la configuracion de los genes para un cromosoma particular
-            Genotype population = Genotype.randomInitialGenotype(configuracion);
+            population = Genotype.randomInitialGenotype(configuracion);
             //Comienza a iterar el algoritmo
             System.out.println("Poblacion inicial");
             Mostrar show = new Mostrar();
@@ -79,5 +66,6 @@ public class Prueba {
         } catch (InvalidConfigurationException ex) {
             System.out.println("No se pudo ejecutar el AG");
         }
+        return population.getFittestChromosome();
     }
 }

@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.ag_ejm1;
+package genetica1.ejemplo2;
 
 /**
  *
  * @author HENRY
  */
-import org.jgap.Chromosome;
-import org.jgap.Configuration;
-import org.jgap.FitnessFunction;
-import org.jgap.Gene;
-import org.jgap.Genotype;
-import org.jgap.IChromosome;
-import org.jgap.InvalidConfigurationException;
+
+import org.jgap.*;
 import org.jgap.impl.DefaultConfiguration;
 import org.jgap.impl.IntegerGene;
 
@@ -56,11 +51,11 @@ public class Prueba {
             //Comienza a iterar el algoritmo
             System.out.println("Poblacion inicial");
             Mostrar show = new Mostrar();
-            for (int m = 0; m < 5; m++) { //50 iteraciones, cada iteracion sera una generacion
+            for (int m = 0; m < 10; m++) { //50 iteraciones, cada iteracion sera una generacion
                 System.out.println("-------------------Inicio generacion-------------------");
                 System.out.println("Iteracion #" + m);
                 show.mostrarTodosIndividuos(population.getChromosomes());
-                population.evolve(10);
+                population.evolve(20);
                 //show.mostrarTodosIndividuos(population.getChromosomes());
                 IChromosome mejor_individuo = population.getFittestChromosome(); //Obtenemos el mejor individuo para esta generacion
                 //System.out.println("Mejor Individuo de la generacion " + m + " :");

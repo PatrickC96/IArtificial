@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.ag_ejm1;
+package genetica1.ejemplo1;
 
 /**
  *
  * @author HENRY
  */
-import org.jgap.Chromosome;
-import org.jgap.Configuration;
-import org.jgap.FitnessFunction;
-import org.jgap.Gene;
-import org.jgap.Genotype;
-import org.jgap.IChromosome;
-import org.jgap.InvalidConfigurationException;
+
+import org.jgap.*;
 import org.jgap.impl.DefaultConfiguration;
 import org.jgap.impl.IntegerGene;
 

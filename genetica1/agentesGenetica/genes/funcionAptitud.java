@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.ag_ejm1;
+package genetica1.agentesGenetica.genes;
 
 /**
  *
@@ -47,13 +47,11 @@ public class funcionAptitud extends FitnessFunction {
         if (c1 == 0) {
             valorXint = -valorXint;
         }
-
         if (c7 == 0) {
             valorYint = -valorYint;
         }
         System.out.println(valorXint + " ; " + valorYint);
         //fitness = 256 - Math.abs(valor - 50);
         fitness = 2048 - ((valorXint) * (valorXint) + valorYint * valorYint);
-
     }
 }

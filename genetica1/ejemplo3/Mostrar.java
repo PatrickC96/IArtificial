@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.ag_ejm1;
+package genetica1.ejemplo3;
 
 /**
  *
@@ -28,23 +28,18 @@ public class Mostrar {
         c10 = (Integer) ind.getGene(9).getAllele();
         c11 = (Integer) ind.getGene(10).getAllele();
         c12 = (Integer) ind.getGene(11).getAllele();
-        String signoX;
-        if (c1 == 0) {
-            signoX = "-";
-        } else {
-            signoX = "";
-        }
-        String signoY;
-        if (c7 == 0) {
-            signoY = "-";
-        } else {
-            signoY = "";
-        }
+
         String valorX = c2.toString() + c3.toString() + c4.toString() + c5.toString() + c6.toString();
         String valorY = c8.toString() + c9.toString() + c10.toString() + c11.toString() + c12.toString();
         int valorXint = (Integer.parseInt(valorX, 2));
         int valorYint = (Integer.parseInt(valorY, 2));
-        System.out.println(signoX + valorXint + " ; " + signoY + valorYint);
+        if (c1 == 0) {
+            valorXint = -valorXint;
+        }
+        if (c7 == 0) {
+            valorYint = -valorYint;
+        }
+        System.out.println(valorXint + " ; " + valorYint);
         System.out.println("");
     }
 
@@ -64,24 +59,17 @@ public class Mostrar {
             c11 = (Integer) iChromosome.getGene(10).getAllele();
             c12 = (Integer) iChromosome.getGene(11).getAllele();
 
-
-            String signoX;
-            if (c1 == 0) {
-                signoX = "-";
-            } else {
-                signoX = "";
-            }
-            String signoY;
-            if (c7 == 0) {
-                signoY = "-";
-            } else {
-                signoY = "";
-            }
             String valorX = c2.toString() + c3.toString() + c4.toString() + c5.toString() + c6.toString();
             String valorY = c8.toString() + c9.toString() + c10.toString() + c11.toString() + c12.toString();
             int valorXint = (Integer.parseInt(valorX, 2));
             int valorYint = (Integer.parseInt(valorY, 2));
-            System.out.println(signoX + valorXint + " ; " + signoY + valorYint);
+            if (c1 == 0) {
+                valorXint = -valorXint;
+            }
+            if (c7 == 0) {
+                valorYint = -valorYint;
+            }
+            System.out.println(valorXint + " ; " + valorYint);
 
         }
     }
