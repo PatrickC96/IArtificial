@@ -28,31 +28,25 @@ public class Ag1 extends Agent {
         private boolean bandera = false;
         @Override
         public void action() {
+            Resultado resultado=null;
 
-            int contenido=0;
             ACLMessage acl = blockingReceive();
             AID nombre = acl.getSender();
+            System.out.println(acl.getContent());
+//            try{
+                Object [] obj = new Prueba().empezar();
+                resultado = new Resultado(Float.parseFloat(obj[0].toString()),Float.parseFloat(obj[1].toString()));
 
-            IChromosome ind = new Prueba().empezar();
-            float [] valores =new Mostrar().getIndividuo(ind);
-            Resultado resultado = new Resultado(valores[0],valores[1]);
+//            }catch (Exception e){
+//                System.out.println("Error en la genetica");
+//                doDelete();
+//
+//            }
 
-            try {
-                contenido = Integer.parseInt( acl.getContent());
-            }catch (Exception e){
-                System.out.println("Error al transformar"+acl.getContent()+"!!!!!!!!!");
-            }
+            new EnviarMensaje().enviarMensajeObject(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
+                    resultado,"COD002");
 
-            if(contenido==10){
-                new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
-                        true+"","COD002");
-                System.out.println("Es el: "+contenido+" Felicitaciones");
-                doDelete();
-            } else {
-               new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
-                        false+"","COD003");
-                System.out.println("No es el: "+contenido);
-            }
+            //doDelete();
         }
         @Override
         public boolean done() {

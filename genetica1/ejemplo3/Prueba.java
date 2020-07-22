@@ -26,18 +26,9 @@ public class Prueba {
 
             //Creamos una codificacion de 8 genes que nos servira para nuestros individuos (fenotipo)
             //Los genes seran valores entre 0 y 1  ejem 01001110 individuo ejemplo
-            genEjemplo[0] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[1] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[2] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[3] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[4] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[5] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[6] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[7] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[8] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[9] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[10] = new IntegerGene(configuracion, 0, 1);
-            genEjemplo[11] = new IntegerGene(configuracion, 0, 1);
+            for(int i = 0 ;i < genEjemplo.length;i++){
+                genEjemplo[i] = new IntegerGene(configuracion, 0, 1);
+            }
 
             //Recordemos que los cromosomas son el correspondiente a los individuos
             //Creamos un individuo a partir de la configuracion de los genes anterior

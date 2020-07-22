@@ -20,9 +20,8 @@ public class Ag2 extends Agent {
     @Override
     protected void takeDown() {
         if(estado){
-            System.out.println("!!!!!!!!!!!!!!! Ganaste la Partida !!!!!!!!!!!!!");
+            System.out.println("Finalizo con exito agente hijos: "+getLocalName()+"!!!!!!!!!!");
         }else{
-            System.out.println("Sigue participando");
             c.crearHijos(nombreAgenteHijo, new Object[]{c,hijo});
         }
     }
@@ -33,34 +32,36 @@ public class Ag2 extends Agent {
         public void action() {
 
             new EnviarMensaje().enviarMensajeString(ACLMessage.REQUEST, "Ag1", getAgent(),
-                    generarAleatorioRango(1,30)+"","COD001");
+                    "hola yo soy: "+getLocalName()+"!!!!!!","COD001");
             c = (Contenedor)getArguments()[0];
             try{
                 hijo = (int) getArguments()[1];
             }catch (Exception e){
                 System.out.println("error fatal!!!!!!!!!!!!!!!");
                 System.out.println(getArguments());
+                estado=false;
             }
             nombreAgenteHijo = "Agente-" + hijo;
             System.out.println("Soy: ("+nombreAgenteHijo+")");
             hijo++;
             bandera = true;
             ACLMessage acl = blockingReceive();
-            try{
-                estado = Boolean.parseBoolean( acl.getContent());
+            try {
+                Resultado resultado =  (Resultado) acl.getContentObject();
+                System.out.println("Los resultados son X:"+resultado.getX()+", Y: "+resultado.getY());
             }catch (Exception e){
-                System.out.println("Error al transformar a bool !!!!!!!!!!!!!!");
+                System.out.println("Error en obtener el objeto");
+                estado=true;
             }
-            //doWait(1000);
+
+
+            //estado=true;
+            doWait(1000);
             doDelete();
         }
         @Override
         public boolean done() {
             return bandera;
         }
-    }
-    public static int generarAleatorioRango(int inicio, int fin) {
-        //Desde inicio hasta fin, ambos incluidos
-        return (int) (Math.random() * ((fin + 1) - inicio)) + inicio;
     }
 }

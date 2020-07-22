@@ -16,8 +16,9 @@ import org.jgap.impl.IntegerGene;
 
 public class Prueba {
 
-    public IChromosome empezar() {
+    public Object[] empezar() {
         Genotype population=null;
+        Mostrar show = new Mostrar();
         try {
             //Configuramos JGAP
             Configuration configuracion = new DefaultConfiguration();
@@ -42,7 +43,7 @@ public class Prueba {
             population = Genotype.randomInitialGenotype(configuracion);
             //Comienza a iterar el algoritmo
             System.out.println("Poblacion inicial");
-            Mostrar show = new Mostrar();
+
             for (int m = 0; m < 5; m++) { //50 iteraciones, cada iteracion sera una generacion
                 System.out.println("-------------------Inicio generacion-------------------");
                 System.out.println("Iteracion #" + m);
@@ -66,6 +67,8 @@ public class Prueba {
         } catch (InvalidConfigurationException ex) {
             System.out.println("No se pudo ejecutar el AG");
         }
-        return population.getFittestChromosome();
+        Configuration.reset();
+        return show.getIndividuo(population.getFittestChromosome());
+        //return population.getFittestChromosome();
     }
 }

@@ -12,6 +12,7 @@ package genetica1.ejemplo2;
 import org.jgap.FitnessFunction;
 import org.jgap.IChromosome;
 
+
 public class funcionAptitud extends FitnessFunction {
 
     private double fitness; //La variable que llevará el valor de aptitud
@@ -27,43 +28,29 @@ public class funcionAptitud extends FitnessFunction {
     }
 
     private void Evaluar(IChromosome cromosoma) {
-        Integer c1 = (Integer) cromosoma.getGene(0).getAllele();//signo X
-        Integer c2 = (Integer) cromosoma.getGene(1).getAllele();
-        Integer c3 = (Integer) cromosoma.getGene(2).getAllele();
-        Integer c4 = (Integer) cromosoma.getGene(3).getAllele();
-        Integer c5 = (Integer) cromosoma.getGene(4).getAllele();
-        Integer c6 = (Integer) cromosoma.getGene(5).getAllele();
-        Integer c7 = (Integer) cromosoma.getGene(6).getAllele();//punto
-        Integer c8 = (Integer) cromosoma.getGene(7).getAllele();
-        Integer c9 = (Integer) cromosoma.getGene(8).getAllele();
-        Integer c10 = (Integer) cromosoma.getGene(9).getAllele();
-        Integer c11 = (Integer) cromosoma.getGene(10).getAllele();
-        Integer c12 = (Integer) cromosoma.getGene(11).getAllele();
+        Integer [] c =new Integer[cromosoma.getGenes().length];
+        for(int i = 0 ;i<cromosoma.getGenes().length;i++){
+            c[i]=(Integer) cromosoma.getGene(i).getAllele();
+        }
+        String numero = "";
+        for(int i = 1 ;i<cromosoma.getGenes().length;i++){
+            numero += c[i].toString();
+        }
+        int entero = Integer.parseInt(numero,2);
 
-        String valorX = c2.toString() + c3.toString() + c4.toString() + c5.toString() + c6.toString();
-        String punto = c7.toString() + c8.toString() + c9.toString() + c10.toString() + c11.toString() + c12.toString();
-        int valorXint = (Integer.parseInt(valorX, 2));
-        int puntoInt = (Integer.parseInt(punto, 2));
-        float valfloat = Float.parseFloat(valorXint+"."+puntoInt);
-        if (c1 == 0) {
+        double valfloat = (double) entero/10000;
+
+        if (c[0] == 0) {
             valfloat = -valfloat;
         }
 
-//        if (c7 == 0) {
-//            puntoInt = -puntoInt;
-//        }
-        System.out.println("valor: "+valfloat);
-        //fitness = 256 - Math.abs(valor - 50); Math.log(x)
-        //System.out.println(Math.sqrt(Math.pow(valorXint,2)+valorYint * valorYint));
+        //System.out.println("valor: "+valfloat);
 
-        //log^2(x + y)
-        //fitness = 2048 - Math.sqrt(Math.pow(valorXint,2)+valorYint * valorYint);
-        //log(x+3)
-        if(valfloat<=-3 ){
+        if(valfloat<-3 ){
             fitness = 0;
         }else{
-            fitness = 4 - Math.abs(Math.log(valfloat+3));
+            //fitness = 4 - Math.abs(Math.log(valfloat+3));
+            fitness = 10 - Math.log(valfloat+3);
         }
-
     }
 }

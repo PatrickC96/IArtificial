@@ -39,7 +39,7 @@ public class Mostrar {
         System.out.println(signoX + valorXint + " ; " + signoY + valorYint);
         System.out.println("");
     }
-    public float[] getIndividuo(IChromosome ind) {
+    public Object[] getIndividuo(IChromosome ind) {
         c1 = (Integer) ind.getGene(0).getAllele();
         c2 = (Integer) ind.getGene(1).getAllele();
         c3 = (Integer) ind.getGene(2).getAllele();
@@ -64,7 +64,7 @@ public class Mostrar {
         }
 //        System.out.println( valorXint + " ; " + + valorYint);
         //System.out.println("");
-        float [] valores = {valorXint,valorYint};
+        Object [] valores = {valorXint,valorYint};
         return valores;
     }
 
