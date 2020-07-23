@@ -50,8 +50,9 @@ public class funcionAptitud extends FitnessFunction {
         if (c7 == 0) {
             valorYint = -valorYint;
         }
-        System.out.println(valorXint + " ; " + valorYint);
+        //System.out.println(valorXint + " ; " + valorYint);
         //fitness = 256 - Math.abs(valor - 50);
-        fitness = 2048 - ((valorXint) * (valorXint) + valorYint * valorYint);
+//        fitness = 2048 - ((valorXint) * (valorXint) + valorYint * valorYint);
+        fitness = 2048 - Math.pow(valorXint-3,2);//(valorXint) * (valorXint) + valorYint * valorYint);
     }
 }

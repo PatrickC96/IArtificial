@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.agentesGenetica.genes;
+package genetica1.genesSolo;
 
 /**
  *
@@ -16,19 +16,19 @@ import org.jgap.impl.IntegerGene;
 
 public class Prueba {
 
-    public Object[] empezar() {
+    public double empezar() {
         Genotype population=null;
-        Mostrar show = new Mostrar();
         try {
             //Configuramos JGAP
+            Configuration.reset();
             Configuration configuracion = new DefaultConfiguration();
             FitnessFunction myFunc = new funcionAptitud();
             configuracion.setFitnessFunction(myFunc); //Le indicamos a JGAP cual sera nuestra funcion de aptitud
-            Gene[] genEjemplo = new Gene[12];
+            Gene[] genEjemplo = new Gene[6];
 
             //Creamos una codificacion de 8 genes que nos servira para nuestros individuos (fenotipo)
             //Los genes seran valores entre 0 y 1  ejem 01001110 individuo ejemplo
-            for(int i=0;i<genEjemplo.length;i++){
+            for(int i = 0 ;i < genEjemplo.length;i++){
                 genEjemplo[i] = new IntegerGene(configuracion, 0, 1);
             }
 
@@ -43,16 +43,16 @@ public class Prueba {
             population = Genotype.randomInitialGenotype(configuracion);
             //Comienza a iterar el algoritmo
             System.out.println("Poblacion inicial");
-
+//            Mostrar show = new Mostrar();
             for (int m = 0; m < 5; m++) { //50 iteraciones, cada iteracion sera una generacion
                 System.out.println("-------------------Inicio generacion-------------------");
                 System.out.println("Iteracion #" + m);
-                //show.mostrarTodosIndividuos(population.getChromosomes());
-                population.evolve(10);
+                mostrarTodosIndividuos(population.getChromosomes());
+                population.evolve(5);
                 //show.mostrarTodosIndividuos(population.getChromosomes());
                 IChromosome mejor_individuo = population.getFittestChromosome(); //Obtenemos el mejor individuo para esta generacion
                 //System.out.println("Mejor Individuo de la generacion " + m + " :");
-                show.mostrarIndividuo(mejor_individuo);
+                mostrarIndividuo(mejor_individuo);
                 System.out.println("Valor de aptitud obtenido:" + mejor_individuo.getFitnessValue());
                 System.out.println("-------------------Fin generacion-------------------");
             }
@@ -62,13 +62,22 @@ public class Prueba {
              * diagonales es 15
              */
             System.out.println("Mejor individuo: ");
-            show.mostrarIndividuo(population.getFittestChromosome()); //mejor individuo obtenido
+            mostrarIndividuo(population.getFittestChromosome()); //mejor individuo obtenido
 
         } catch (InvalidConfigurationException ex) {
             System.out.println("No se pudo ejecutar el AG");
         }
-        Configuration.reset();
-        return show.getIndividuo(population.getFittestChromosome());
-        //return population.getFittestChromosome();
+        return mostrarIndividuo(population.getFittestChromosome());
+    }
+
+    public void mostrarTodosIndividuos(IChromosome[] ind) {
+        for (IChromosome iChromosome : ind) {
+            mostrarIndividuo(iChromosome);
+        }
+    }
+    public double mostrarIndividuo(IChromosome cromosoma) {
+        double valX = new funcionAptitud().Evaluar(cromosoma);
+        System.out.println(valX + " ; resultado: " + Math.log(valX+3));
+        return valX;
     }
 }

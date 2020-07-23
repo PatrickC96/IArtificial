@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.agentesGenetica.genes;
+package genetica1.genesMultiples;
 
 /**
  *
@@ -18,7 +18,6 @@ public class Prueba {
 
     public Object[] empezar() {
         Genotype population=null;
-        Mostrar show = new Mostrar();
         try {
             //Configuramos JGAP
             Configuration configuracion = new DefaultConfiguration();
@@ -28,7 +27,7 @@ public class Prueba {
 
             //Creamos una codificacion de 8 genes que nos servira para nuestros individuos (fenotipo)
             //Los genes seran valores entre 0 y 1  ejem 01001110 individuo ejemplo
-            for(int i=0;i<genEjemplo.length;i++){
+            for(int i = 0 ;i < genEjemplo.length;i++){
                 genEjemplo[i] = new IntegerGene(configuracion, 0, 1);
             }
 
@@ -43,16 +42,16 @@ public class Prueba {
             population = Genotype.randomInitialGenotype(configuracion);
             //Comienza a iterar el algoritmo
             System.out.println("Poblacion inicial");
-
+//            Mostrar show = new Mostrar();
             for (int m = 0; m < 5; m++) { //50 iteraciones, cada iteracion sera una generacion
                 System.out.println("-------------------Inicio generacion-------------------");
                 System.out.println("Iteracion #" + m);
-                //show.mostrarTodosIndividuos(population.getChromosomes());
+                mostrarTodosIndividuos(population.getChromosomes());
                 population.evolve(10);
                 //show.mostrarTodosIndividuos(population.getChromosomes());
                 IChromosome mejor_individuo = population.getFittestChromosome(); //Obtenemos el mejor individuo para esta generacion
                 //System.out.println("Mejor Individuo de la generacion " + m + " :");
-                show.mostrarIndividuo(mejor_individuo);
+                mostrarIndividuo(mejor_individuo);
                 System.out.println("Valor de aptitud obtenido:" + mejor_individuo.getFitnessValue());
                 System.out.println("-------------------Fin generacion-------------------");
             }
@@ -62,13 +61,47 @@ public class Prueba {
              * diagonales es 15
              */
             System.out.println("Mejor individuo: ");
-            show.mostrarIndividuo(population.getFittestChromosome()); //mejor individuo obtenido
+            mostrarIndividuo(population.getFittestChromosome()); //mejor individuo obtenido
 
         } catch (InvalidConfigurationException ex) {
             System.out.println("No se pudo ejecutar el AG");
         }
         Configuration.reset();
-        return show.getIndividuo(population.getFittestChromosome());
-        //return population.getFittestChromosome();
+        return mostrarIndividuo(population.getFittestChromosome());
+    }
+
+    public void mostrarTodosIndividuos(IChromosome[] ind) {
+        for (IChromosome iChromosome : ind) {
+            mostrarIndividuo(iChromosome);
+        }
+    }
+    public Object[] mostrarIndividuo(IChromosome cromosoma) {
+        Integer [] c = new Integer[cromosoma.getGenes().length];
+        for(int i =0;i < cromosoma.getGenes().length;i++){
+            c[i]=(Integer) cromosoma.getGene(i).getAllele();
+        }
+        String valorX = "";
+        String valorY = "";
+        for(int i = 2;i<cromosoma.getGenes().length;i++){
+            if (i%2==0){
+                valorX += c[i].toString();
+            }else{
+                valorY += c[i].toString();
+            }
+        }
+        int valorXint = (Integer.parseInt(valorX, 2));
+        int valorYint = (Integer.parseInt(valorY, 2));
+        double valX = (double)valorXint/10;
+        double valY = (double)valorYint/10;
+        if (c[0] == 0) {
+            valX = -valX;
+        }
+        if (c[1] == 0) {
+            valY = -valY;
+        }
+        System.out.println(valX + " ; " + valY);
+
+        Object [] valores = {valX,valY};
+        return valores;
     }
 }
