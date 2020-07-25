@@ -1,4 +1,4 @@
-package comunicacion;
+package practica_comunicacion;
 
 /**
  *

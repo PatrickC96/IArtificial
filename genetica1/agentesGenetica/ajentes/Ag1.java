@@ -1,6 +1,5 @@
 package genetica1.agentesGenetica.ajentes;
 
-import genetica1.agentesGenetica.genes.Mostrar;
 import genetica1.agentesGenetica.genes.Prueba;
 import jade.core.AID;
 import jade.core.Agent;
@@ -33,15 +32,9 @@ public class Ag1 extends Agent {
             ACLMessage acl = blockingReceive();
             AID nombre = acl.getSender();
             System.out.println(acl.getContent());
-//            try{
-                Object [] obj = new Prueba().empezar();
-                resultado = new Resultado(Float.parseFloat(obj[0].toString()),Float.parseFloat(obj[1].toString()));
 
-//            }catch (Exception e){
-//                System.out.println("Error en la genetica");
-//                doDelete();
-//
-//            }
+            double [] obj = new Prueba().empezar();
+            resultado = new Resultado(obj[0],obj[1]);
 
             new EnviarMensaje().enviarMensajeObject(ACLMessage.REQUEST, nombre.getLocalName(), getAgent(),
                     resultado,"COD002");

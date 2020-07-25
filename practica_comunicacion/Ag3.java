@@ -1,4 +1,4 @@
-package comunicacion;
+package practica_comunicacion;
 
 import jade.core.Agent;
 import jade.core.behaviours.CyclicBehaviour;

@@ -3,13 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package trabajo3;
+package agentes;
 
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.wrapper.AgentContainer;
 import jade.wrapper.AgentController;
 import jade.wrapper.StaleProxyException;
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Contenedor {
     AgentController agenteController;
@@ -22,7 +25,7 @@ public class Contenedor {
         runtime.setCloseVM(true);
         System.out.println("Runtime ha sido creado\n");
 
-        Profile profile = new ProfileImpl(null, 1099, null);
+        Profile profile = new ProfileImpl(null, 1098, null);
         System.out.println("Perfil por defecto creado");
 
         mainContainer = runtime.createMainContainer(profile);
@@ -34,18 +37,24 @@ public class Contenedor {
     private void iniciarAgentes() {
 
         try {
-            mainContainer.createNewAgent("Ag5", Ag5.class.getName(), null).start();            
-            mainContainer.createNewAgent("Ag4", Ag4.class.getName(), null).start();
-            mainContainer.createNewAgent("Ag1", Ag1.class.getName(), null).start();
-            mainContainer.createNewAgent("Ag2", Ag2.class.getName(), null).start();
-            mainContainer.createNewAgent("Ag3", Ag3.class.getName(), null).start();
+            mainContainer.createNewAgent("Ag2", agentes.Ag2.class.getName(), null).start();
+            mainContainer.createNewAgent("Ag3", agentes.Ag3.class.getName(), null).start();
+            mainContainer.createNewAgent("Ag4", agentes.Ag4.class.getName(), null).start();
+            mainContainer.createNewAgent("Ag1", agentes.Ag1.class.getName(), new Object[]{this,1}).start();
+
         } catch (StaleProxyException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
-        new Contenedor().contenedor();
-    }    
+    public void crearHijos(String nickname,Object[] conocimiento){
+        try {
+            mainContainer.createNewAgent(nickname, agentes.Ag1.class.getName(), conocimiento).start();
+        } catch (StaleProxyException ex) {
+            Logger.getLogger(Contenedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+
 }

@@ -1,13 +1,15 @@
-package trabajo3;
+package Examen.agentes;
 
 /**
  *
  * @author david
  */
+
 import jade.core.AID;
 import jade.core.Agent;
 import jade.domain.FIPANames;
 import jade.lang.acl.ACLMessage;
+
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.logging.Level;

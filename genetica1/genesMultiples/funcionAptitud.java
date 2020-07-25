@@ -26,7 +26,7 @@ public class funcionAptitud extends FitnessFunction {
         return fitness;//agregar comprobacion de si es 50
     }
 
-    private void Evaluar(IChromosome cromosoma) {
+    public double[] Evaluar(IChromosome cromosoma) {
         Integer [] c = new Integer[cromosoma.getGenes().length];
         for(int i =0;i < cromosoma.getGenes().length;i++){
             c[i]=(Integer) cromosoma.getGene(i).getAllele();
@@ -51,6 +51,7 @@ public class funcionAptitud extends FitnessFunction {
         if (c[1] == 0) {
             valY = -valY;
         }
-        fitness = 20 - Math.sqrt(Math.pow(valX,2)+valY * valY);
+        fitness = 20 - Math.sqrt(Math.pow(valX,2)+Math.pow(valY+1,2));
+        return new double[]{valX, valY};
     }
 }

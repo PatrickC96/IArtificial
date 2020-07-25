@@ -3,18 +3,18 @@ package genetica1.agentesGenetica.ajentes;
 import java.io.Serializable;
 
 public class Resultado implements Serializable {
-    private Float x;
-    private Float y;
+    private double x;
+    private double y;
 
-    public Resultado(Float x, Float y) {
+    public Resultado(double x, double y) {
         this.x = x;
         this.y = y;
     }
-    public Float getX() {
+    public double getX() {
         return x;
     }
 
-    public Float getY() {
+    public double getY() {
         return y;
     }
 }

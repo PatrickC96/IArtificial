@@ -54,7 +54,6 @@ public class Ag2 extends Agent {
                 estado=true;
             }
 
-
             //estado=true;
             doWait(1000);
             doDelete();

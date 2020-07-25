@@ -26,33 +26,32 @@ public class funcionAptitud extends FitnessFunction {
         return fitness;//agregar comprobacion de si es 50
     }
 
-    private void Evaluar(IChromosome cromosoma) {
-        Integer c1 = (Integer) cromosoma.getGene(0).getAllele();//signo X
-        Integer c2 = (Integer) cromosoma.getGene(1).getAllele();
-        Integer c3 = (Integer) cromosoma.getGene(2).getAllele();
-        Integer c4 = (Integer) cromosoma.getGene(3).getAllele();
-        Integer c5 = (Integer) cromosoma.getGene(4).getAllele();
-        Integer c6 = (Integer) cromosoma.getGene(5).getAllele();
-        Integer c7 = (Integer) cromosoma.getGene(6).getAllele();//signo Y
-        Integer c8 = (Integer) cromosoma.getGene(7).getAllele();
-        Integer c9 = (Integer) cromosoma.getGene(8).getAllele();
-        Integer c10 = (Integer) cromosoma.getGene(9).getAllele();
-        Integer c11 = (Integer) cromosoma.getGene(10).getAllele();
-        Integer c12 = (Integer) cromosoma.getGene(11).getAllele();
+    public double[] Evaluar(IChromosome cromosoma) {
+        Integer [] c = new Integer[cromosoma.getGenes().length];
+        for(int i =0;i < cromosoma.getGenes().length;i++){
+            c[i]=(Integer) cromosoma.getGene(i).getAllele();
+        }
+        String valorX = "";
+        String valorY = "";
+        for(int i = 2;i<cromosoma.getGenes().length;i++){
+            if (i%2==0){
+                valorX += c[i].toString();
+            }else{
+                valorY += c[i].toString();
+            }
+        }
 
-        String valorX = c2.toString() + c3.toString() + c4.toString() + c5.toString() + c6.toString();
-        String valorY = c8.toString() + c9.toString() + c10.toString() + c11.toString() + c12.toString();
         int valorXint = (Integer.parseInt(valorX, 2));
         int valorYint = (Integer.parseInt(valorY, 2));
-        if (c1 == 0) {
-            valorXint = -valorXint;
+        double valX = (double)valorXint;
+        double valY = (double)valorYint;
+        if (c[0] == 0) {
+            valX = -valX;
         }
-        if (c7 == 0) {
-            valorYint = -valorYint;
+        if (c[1] == 0) {
+            valY = -valY;
         }
-        //System.out.println(valorXint + " ; " + valorYint);
-        //fitness = 256 - Math.abs(valor - 50);
-//        fitness = 2048 - ((valorXint) * (valorXint) + valorYint * valorYint);
-        fitness = 2048 - Math.pow(valorXint-3,2);//(valorXint) * (valorXint) + valorYint * valorYint);
+        fitness = 100 - Math.sqrt(Math.pow(valX,2)+Math.pow(valY+1,2));
+        return new double[]{valX, valY};
     }
 }

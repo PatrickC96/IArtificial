@@ -43,7 +43,6 @@ public class Prueba {
             population = Genotype.randomInitialGenotype(configuracion);
             //Comienza a iterar el algoritmo
             System.out.println("Poblacion inicial");
-//            Mostrar show = new Mostrar();
             for (int m = 0; m < 5; m++) { //50 iteraciones, cada iteracion sera una generacion
                 System.out.println("-------------------Inicio generacion-------------------");
                 System.out.println("Iteracion #" + m);

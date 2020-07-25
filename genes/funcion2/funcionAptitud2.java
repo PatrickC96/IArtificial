@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package genetica1.genesSolo;
+package genes.funcion2;
 
 /**
  *
@@ -12,11 +12,11 @@ package genetica1.genesSolo;
 import org.jgap.FitnessFunction;
 import org.jgap.IChromosome;
 
-public class funcionAptitud extends FitnessFunction {
+public class funcionAptitud2 extends FitnessFunction {
 
     private double fitness;
 
-    public funcionAptitud() {
+    public funcionAptitud2() {
         fitness = 0;
     }
 
@@ -35,18 +35,17 @@ public class funcionAptitud extends FitnessFunction {
         for(int i = 1;i<cromosoma.getGenes().length;i++){
                 valorX += c[i].toString();
         }
-        int valorXint = (Integer.parseInt(valorX, 2));
-        double valX = (double)valorXint/10;
+        int valX = (Integer.parseInt(valorX, 2));
         if (c[0] == 0) {
             valX = -valX;
         }
         //fitness = 50 - Math.pow(valX-3,2);
-        if(valX<-3){
+        if(valX<16 ||valX>20 ){
             fitness = 0;
         }else{
-            fitness = 10 - Math.log(valX+3);
+            //y = 3884.7x -173594
+            fitness = 3884.7*valX;
         }
-
         return valX;
     }
 }

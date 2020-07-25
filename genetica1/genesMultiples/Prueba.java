@@ -16,7 +16,7 @@ import org.jgap.impl.IntegerGene;
 
 public class Prueba {
 
-    public Object[] empezar() {
+    public double[] empezar() {
         Genotype population=null;
         try {
             //Configuramos JGAP
@@ -75,33 +75,12 @@ public class Prueba {
             mostrarIndividuo(iChromosome);
         }
     }
-    public Object[] mostrarIndividuo(IChromosome cromosoma) {
-        Integer [] c = new Integer[cromosoma.getGenes().length];
-        for(int i =0;i < cromosoma.getGenes().length;i++){
-            c[i]=(Integer) cromosoma.getGene(i).getAllele();
-        }
-        String valorX = "";
-        String valorY = "";
-        for(int i = 2;i<cromosoma.getGenes().length;i++){
-            if (i%2==0){
-                valorX += c[i].toString();
-            }else{
-                valorY += c[i].toString();
-            }
-        }
-        int valorXint = (Integer.parseInt(valorX, 2));
-        int valorYint = (Integer.parseInt(valorY, 2));
-        double valX = (double)valorXint/10;
-        double valY = (double)valorYint/10;
-        if (c[0] == 0) {
-            valX = -valX;
-        }
-        if (c[1] == 0) {
-            valY = -valY;
-        }
-        System.out.println(valX + " ; " + valY);
+    public double[] mostrarIndividuo(IChromosome cromosoma) {
 
-        Object [] valores = {valX,valY};
+        double[] valores = new funcionAptitud().Evaluar(cromosoma);
+
+        System.out.println(valores[0] + " ; " + valores[1]);
+
         return valores;
     }
 }
