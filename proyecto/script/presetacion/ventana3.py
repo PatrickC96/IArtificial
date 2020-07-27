@@ -17,8 +17,8 @@ imageFrame.grid(row=0, column=0, padx=10, pady=2)
 
 #Metodos de reconocimiento
 #method = 'EigenFaces'
-method = 'FisherFaces'
-#method = 'LBPH'
+#method = 'FisherFaces'
+method = 'LBPH'
 
 if method == 'EigenFaces': emotion_recognizer = cv2.face.EigenFaceRecognizer_create()
 if method == 'FisherFaces': emotion_recognizer = cv2.face.FisherFaceRecognizer_create()
@@ -63,8 +63,7 @@ def show_frame():
 
         # EigenFaces
         if method == 'EigenFaces':
-            if result[1] < 13000:
-                # if result[1] < 15700:
+            if result[1] < 5700:
                 cv2.putText(frame,'{}'.format(imagePaths[result[0]]),(x,y-25),2,1.1,(0,255,0),1,cv2.LINE_AA)
                 cv2.rectangle(frame, (x,y),(x+w,y+h),(0,255,0),2)
             else:
@@ -73,8 +72,7 @@ def show_frame():
         
         # FisherFace
         if method == 'FisherFaces':
-            if result[1] < 1800:
-                # if result[1] < 500:
+            if result[1] < 500:
                 cv2.putText(frame,'{}'.format(imagePaths[result[0]]),(x,y-25),2,1.1,(0,255,0),1,cv2.LINE_AA)
                 cv2.rectangle(frame, (x,y),(x+w,y+h),(0,255,0),2)
             else:
